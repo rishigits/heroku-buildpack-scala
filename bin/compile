@@ -55,10 +55,13 @@ curl --retry 3 --silent --location $JVM_COMMON_BUILDPACK | tar xzm -C /tmp/jvm-c
 mkdir -p $CACHE_DIR
 
 # install JDK
-javaVersion=$(detect_java_version ${BUILD_DIR})
+#rishi
+JDK_URL_1_8="http://9.26.155.191/s390x/buildpacks/openjdk-1.8.0.tar.gz"
+#javaVersion=$(detect_java_version ${BUILD_DIR})
 status_pending "Installing OpenJDK ${javaVersion}"
-install_java ${BUILD_DIR} ${javaVersion}
-jdk_overlay ${BUILD_DIR}
+install_java_with_overlay ${BUILD_DIR}
+#install_java ${BUILD_DIR} ${javaVersion}
+#jdk_overlay ${BUILD_DIR}
 status_done
 
 # home directory from perspective of SBT; we rename
